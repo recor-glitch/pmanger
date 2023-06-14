@@ -1,0 +1,38 @@
+class CreateProjectDto {
+    final String image;
+    final String title;
+    final String date;
+    final String routine;
+    final List<dynamic> steps;
+
+    CreateProjectDto({
+        required this.image,
+        required this.title,
+        required this.date,
+        required this.routine,
+        required this.steps,
+    });
+
+    Map<String, dynamic> toJson() => {
+        "image": image,
+        "title": title,
+        "date": date,
+        "routine": routine,
+        "steps": List<dynamic>.from(steps.map((x) => x)),
+    };
+
+    CreateProjectDto copyWith({
+        String? image,
+        String? title,
+        String? date,
+        String? routine,
+        List<dynamic>? steps,
+    }) => 
+        CreateProjectDto(
+            image: image ?? this.image,
+            title: title ?? this.title,
+            date: date ?? this.date,
+            routine: routine ?? this.routine,
+            steps: steps ?? this.steps,
+        );
+}
